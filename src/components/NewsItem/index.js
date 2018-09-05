@@ -1,14 +1,13 @@
 import React from 'react';
 
-const newsItem = ({ text }) => (
+import Comments from '../../containers/Comments';
+
+const newsItem = ({ id, text }) => (
   <div className="news__item">
     <div className="text">
       {text}
     </div>
-    <form className="leave-comment">
-      <input type="text" />
-      <input type="submit" value="Comment" />
-    </form>
+    <Comments newsItemId={id} />
   </div>
 );
 

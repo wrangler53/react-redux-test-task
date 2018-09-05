@@ -5,16 +5,20 @@ import NewsItem from '../../components/NewsItem';
 
 class NewsFeed extends Component {
   render() {
+    const { newsList } = this.props
     return (
-      this.props.newsList.map(item => {
-        const { id, text, createdBy, comments } = item;
-        return <NewsItem
-          key={id}
-          text={text}
-          author={createdBy}
-          comments={comments}
-        />
-      })
+      <div className="news">
+        {
+          newsList.map(item => {
+            const { id, text } = item;
+            return <NewsItem
+              id
+              key={id}
+              text={text}
+            />
+          })
+        }
+      </div>
     )
   }
 };
