@@ -21,7 +21,7 @@ class loginUserForm extends Component {
     return (
       <form className="login-user" onSubmit={event => this.loginUserHandler(event)}>
         <input type="text" onChange={event => this.inputChangeHandler(event)} />
-        <input type="submit" value="Login" />
+        <input type="submit" value="Login" disabled={this.state.userName.length === 0} />
       </form>
     )
   }
