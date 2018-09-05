@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/actionsTypes';
+import * as actionTypes from '../constants/actionsTypes';
 
 const initialState = {
   users: [
@@ -22,16 +22,34 @@ const initialState = {
       id: 5,
       nickname: 'user',
     }
-  ]
+  ],
+  currentUser: {
+    nickname: null,
+    isLoggedIn: false
+  }
 }
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.LOGIN_USER:
-      console.log(state)
+    case actionTypes.LOGIN_SUCCESS:
+      return {
+        ...state,
+        currentUser: {
+          nickname: action.userName,
+          isLoggedIn: true
+        }
+      };
+    case actionTypes.LOGIN_FAILED:
+      return {
+        ...state,
+        currentUser: {
+          nickname: null,
+          isLoggedIn: false
+        }
+      };
+    default:
       return state;
   }
-  return state;
 }
 
 export default userReducer;
