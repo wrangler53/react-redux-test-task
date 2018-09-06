@@ -39,8 +39,8 @@ const newsReducer = (state = initialState, action) => {
           [index]: {
             ...state.news[index],
             comments: [
-              ...state.news[index].comments,
-              { id, author, commentText }
+              { id, author, commentText },
+              ...state.news[index].comments
             ]
           }
         }
