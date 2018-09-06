@@ -16,7 +16,7 @@ class loginUserForm extends Component {
   loginUserHandler = event => {
     event.preventDefault();
     this.props.loginUser(this.state.userName);
-    this.setState({ showMessage: true });
+    this.setState({ userName: '', showMessage: true });
   }
 
   render() {

@@ -17,6 +17,7 @@ class Comments extends Component {
   addCommentHandler = event => {
     event.preventDefault();
     this.props.addComment(this.props.newsItemId, this.state.comment, this.props.userNickname);
+    this.setState({ comment: '' });
   }
 
   render() {
