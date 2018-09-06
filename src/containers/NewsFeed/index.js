@@ -9,7 +9,6 @@ class NewsFeed extends Component {
       <div className="news-feed">
         {
           this.props.newsList.map(item => {
-            console.log(item)
             const { id, text } = item;
             return <NewsItem
               id={id}

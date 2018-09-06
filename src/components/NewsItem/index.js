@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Comments from '../../containers/Comments';
 
@@ -10,5 +11,13 @@ const newsItem = ({ id, text }) => (
     <Comments newsItemId={id} />
   </div>
 );
+
+newsItem.propTypes = {
+  id: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
+  text: PropTypes.string.isRequired
+}
 
 export default newsItem;

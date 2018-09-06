@@ -61,9 +61,7 @@ const mapStateToProps = (state, ownProps) => ({
       .map(item => item.comments)[0]
 });
 
-const mapDispatchToProps = dispatch => ({
-  addComment: (newsItemId, commentText, author) => dispatch(addComment(newsItemId, commentText, author))
-})
+const mapDispatchToProps = { addComment };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);
 

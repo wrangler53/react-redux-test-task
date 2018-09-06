@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const commentItem = ({ author, text }) => (
   <div className="comment__item">
@@ -8,5 +9,10 @@ const commentItem = ({ author, text }) => (
     <div className="comment-text">{text}</div>
   </div>
 );
+
+commentItem.propTypes = {
+  author: PropTypes.string,
+  text: PropTypes.string
+}
 
 export default commentItem;
