@@ -5,14 +5,14 @@ import NewsItem from '../../components/NewsItem';
 
 class NewsFeed extends Component {
   render() {
-    const { newsList } = this.props
     return (
-      <div className="news">
+      <div className="news-feed">
         {
-          newsList.map(item => {
+          this.props.newsList.map(item => {
+            console.log(item)
             const { id, text } = item;
             return <NewsItem
-              id
+              id={id}
               key={id}
               text={text}
             />
@@ -24,7 +24,7 @@ class NewsFeed extends Component {
 };
 
 const mapStateToProps = state => ({
-  newsList: state.newsReducer.news
+  newsList: Object.values(state.newsReducer.news)
 });
 
 export default connect(mapStateToProps)(NewsFeed);

@@ -3,7 +3,7 @@ import React from 'react';
 import Comments from '../../containers/Comments';
 
 const newsItem = ({ id, text }) => (
-  <div className="news__item">
+  <div className="news-feed__item">
     <div className="text">
       {text}
     </div>

@@ -16,3 +16,8 @@ export const loginUser = userName => (dispatch, getStore) => {
     dispatch(loginUserSuccess(userName)) :
     dispatch(loginUserFailed());
 }
+
+export const addComment = (newsItemId, commentText, author) => ({
+  type: actionsTypes.ADD_COMMENT,
+  payload: { id: new Date(), newsItemId, commentText, author }
+})

@@ -25,8 +25,16 @@ class loginUserForm extends Component {
     return (
       <div className="login-user">
         <form className="login-user__form" onSubmit={event => this.loginUserHandler(event)}>
-          <input type="text" onChange={event => this.inputChangeHandler(event)} />
-          <input type="submit" value="Login" disabled={this.state.userName.length === 0} />
+          <input
+            type="text"
+            value={this.state.userName}
+            onChange={event => this.inputChangeHandler(event)}
+          />
+          <input
+            type="submit"
+            value="Login"
+            disabled={this.state.userName.length === 0}
+          />
         </form>
         {
           (this.state.showMessage) ?
