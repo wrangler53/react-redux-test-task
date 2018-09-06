@@ -1,0 +1,11 @@
+.comment {
+  &__item {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  &-author {
+    font-style: italic;
+    color: $dark-red;
+  }
+}

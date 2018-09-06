@@ -1,0 +1,12 @@
+// Common styles
+@import './common/_variables';
+@import './common/_mixins';
+@import './common/_common';
+@import './common/_message';
+
+// Components and Containers styles
+@import '../../containers/NewsFeed/_NewsFeed';
+@import '../../components/NewsItem/_NewsItem';
+@import '../../containers/Comments/_Comments';
+@import '../../components/CommentItem/_CommentItem';
+@import '../../components/LoginUserForm/_LoginUserForm'

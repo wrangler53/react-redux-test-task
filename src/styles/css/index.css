@@ -2,4 +2,51 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-}
+  font-size: 16px; }
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center; }
+
+.msg {
+  margin-top: 5px; }
+  .msg_success {
+    color: #008000; }
+  .msg_error {
+    color: #ff0000; }
+
+.news-feed {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  max-width: 40%;
+  height: 90%;
+  padding: 0 20px;
+  overflow-y: scroll; }
+
+.news-feed__item {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #C9C7C3; }
+  .news-feed__item .text {
+    margin-bottom: 10px; }
+
+.leave-comment__input {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 5px; }
+
+.comment__item {
+  margin-top: 10px;
+  font-size: 14px; }
+
+.comment-author {
+  font-style: italic;
+  color: #8B0000; }
+
+.login-user {
+  width: 20%; }

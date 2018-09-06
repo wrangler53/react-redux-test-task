@@ -1,0 +1,11 @@
+.msg {
+  margin-top: 5px;
+
+  &_success {
+    color: $green;
+  }
+
+  &_error {
+    color: $red;
+  }
+}

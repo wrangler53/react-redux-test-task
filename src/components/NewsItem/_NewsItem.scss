@@ -1,0 +1,11 @@
+.news-feed {
+  &__item {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid $light-grey;
+
+    .text {
+      margin-bottom: 10px;
+    }
+  } 
+}
