@@ -32,7 +32,7 @@ class authUserForm extends Component {
           />
           <input
             type="submit"
-            value="Login"
+            value="Sign In"
             disabled={this.state.userName.length === 0}
           />
         </form>

@@ -39,7 +39,7 @@ const userReducer = (state = initialState, action) => {
         isUserJustGeristered: true,
         users: [
           ...state.users,
-          { id, userName }
+          { id, nickname: userName }
         ]
       }
     case actionTypes.LOGIN_USER:
