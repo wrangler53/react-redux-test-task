@@ -1,20 +1,25 @@
 import * as actionsTypes from '../constants/actionsTypes';
 import checkIsUserExistsInDB from '../helpers/checkIsUserExistsInDB';
 
-export const loginUserSuccess = userName => ({
-  type: actionsTypes.LOGIN_SUCCESS,
+export const loginUser = userName => ({
+  type: actionsTypes.LOGIN_USER,
   userName
 });
 
-export const loginUserFailed = () => ({
-  type: actionsTypes.LOGIN_FAILED
+export const registerUser = userName => ({
+  type: actionsTypes.REGISTER_USER,
+  payload: { id: new Date(), userName }
 });
 
-export const loginUser = userName => (dispatch, getStore) => {
+export const authUser = userName => (dispatch, getStore) => {
   const users = getStore().userReducer.users;
-  (checkIsUserExistsInDB(users, userName)) ?
-    dispatch(loginUserSuccess(userName)) :
-    dispatch(loginUserFailed());
+
+  if (checkIsUserExistsInDB(users, userName)) {
+    dispatch(loginUser(userName));
+  } else {
+    dispatch(registerUser(userName));
+    dispatch(loginUser(userName));
+  }
 }
 
 export const addComment = (newsItemId, commentText, author) => ({
