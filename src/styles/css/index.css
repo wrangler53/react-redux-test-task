@@ -37,8 +37,12 @@ body {
 
 .leave-comment__input {
   box-sizing: border-box;
-  width: 100%;
-  margin-bottom: 5px; }
+  width: 100%; }
+
+.leave-comment .characters-count {
+  font-size: 12px;
+  margin-bottom: 5px;
+  font-style: italic; }
 
 .comment__item {
   margin-top: 10px;

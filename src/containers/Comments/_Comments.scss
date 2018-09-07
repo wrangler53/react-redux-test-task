@@ -2,6 +2,11 @@
   &__input {
     box-sizing: border-box;
     width: 100%;
+  }
+  
+  .characters-count {
+    font-size: 12px;
     margin-bottom: 5px;
+    font-style: italic;
   }
 }

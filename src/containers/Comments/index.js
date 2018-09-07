@@ -7,7 +7,8 @@ import CommentItem from '../../components/CommentItem';
 
 class Comments extends Component {
   state = {
-    comment: ''
+    comment: '',
+    maxSymbolsCount: 100
   }
 
   inputChangeHandler = event => {
@@ -22,6 +23,7 @@ class Comments extends Component {
 
   render() {
     const { commentsList, isUserLoggedIn } = this.props;
+    const { comment, maxSymbolsCount } = this.state;
     return (
       <div className="comments">
         <form className="leave-comment" onSubmit={event => this.addCommentHandler(event)}>
@@ -29,8 +31,12 @@ class Comments extends Component {
             type="text"
             value={this.state.comment}
             className="leave-comment__input"
+            maxLength={maxSymbolsCount}
             onChange={event => this.inputChangeHandler(event)}
           />
+          <div className="characters-count">
+            Characters left: {maxSymbolsCount - comment.length}
+          </div>
           <input
             type="submit"
             value="Comment"
