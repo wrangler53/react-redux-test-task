@@ -63,7 +63,7 @@ const mapStateToProps = (state, ownProps) => ({
   isUserLoggedIn: state.userReducer.currentUser.isLoggedIn,
   userNickname: state.userReducer.currentUser.nickname,
   commentsList:
-    Object.values(state.newsReducer.news)
+    state.newsReducer.news
       .filter(item => item.id === ownProps.newsItemId)
       .map(item => item.comments)[0]
 });
@@ -73,10 +73,7 @@ const mapDispatchToProps = { addComment };
 Comments.propTypes = {
   isUserLoggedIn: PropTypes.bool.isRequired,
   userNickname: PropTypes.string,
-  commentsList: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
-  ]).isRequired,
+  commentsList: PropTypes.array.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);

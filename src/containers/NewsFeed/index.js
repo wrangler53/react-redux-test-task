@@ -24,14 +24,11 @@ class NewsFeed extends Component {
 };
 
 const mapStateToProps = state => ({
-  newsList: Object.values(state.newsReducer.news)
+  newsList: state.newsReducer.news
 });
 
 NewsFeed.propTypes = {
-  newsList: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array
-  ]).isRequired
+  newsList: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default connect(mapStateToProps)(NewsFeed);

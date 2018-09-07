@@ -29,22 +29,16 @@ const newsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_COMMENT:
       const { id, author, commentText, newsItemId } = action.payload;
-      // which element to update
-      const index = Object.values(state.news).findIndex(item => item.id === newsItemId);
+      const newsIndex = state.news.findIndex(item => item.id === newsItemId);
+
+      const updatedItem = state.news[newsIndex];
+      updatedItem.comments = [...updatedItem.comments];
+      updatedItem.comments.push({ id, author, commentText });
 
       return {
         ...state,
-        news: {
-          ...state.news,
-          [index]: {
-            ...state.news[index],
-            comments: [
-              { id, author, commentText },
-              ...state.news[index].comments
-            ]
-          }
-        }
-      }
+        news: [...state.news]
+      };
     default:
       return state;
   }
