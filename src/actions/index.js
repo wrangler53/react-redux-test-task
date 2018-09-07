@@ -1,9 +1,9 @@
 import * as actionsTypes from '../constants/actionsTypes';
 import checkIsUserExistsInDB from '../helpers/checkIsUserExistsInDB';
 
-export const loginUser = userName => ({
+export const loginUser = (userName, isNewUser = false) => ({
   type: actionsTypes.LOGIN_USER,
-  userName
+  payload: { userName, isNewUser }
 });
 
 export const registerUser = userName => ({
@@ -18,7 +18,7 @@ export const authUser = userName => (dispatch, getStore) => {
     dispatch(loginUser(userName));
   } else {
     dispatch(registerUser(userName));
-    dispatch(loginUser(userName));
+    dispatch(loginUser(userName, true));
   }
 }
 

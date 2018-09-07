@@ -20,7 +20,7 @@ class authUserForm extends Component {
   }
 
   render() {
-    const { isUserLoggedIn, isUserJustGeristered, userNickname } = this.props;
+    const { isNewUser, userNickname } = this.props;
 
     return (
       <div className="auth-user">
@@ -38,15 +38,10 @@ class authUserForm extends Component {
         </form>
         {
           (this.state.showMessage) ?
-            (isUserLoggedIn && isUserJustGeristered) ?
+            (isNewUser) ?
               <div className="msg msg_success">User {userNickname} was successfully registered and logged in</div> :
               <div className="msg msg_success">User {userNickname} was successfully logged in</div>
             : null
-          // (this.state.showMessage) ?
-          //   (isUserLoggedIn) ?
-          //     <div className="msg msg_success">User {userNickname} was successfully logged in</div> :
-          //     <div className="msg msg_error">Login failed</div>
-          //   : null
         }
       </div>
     )
@@ -55,7 +50,7 @@ class authUserForm extends Component {
 
 const mapStateToProps = state => ({
   isUserLoggedIn: state.userReducer.currentUser.isLoggedIn,
-  isUserJustGeristered: state.userReducer.currentUser.isUserJustGeristered,
+  isNewUser: state.userReducer.currentUser.isNewUser,
   userNickname: state.userReducer.currentUser.nickname
 });
 
