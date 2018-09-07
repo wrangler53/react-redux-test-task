@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import ErrorBoundary from '../../containers/ErrorBoundary';
 import Comments from '../../containers/Comments';
 
 const newsItem = ({ id, text }) => (
@@ -8,7 +9,9 @@ const newsItem = ({ id, text }) => (
     <div className="text">
       {text}
     </div>
-    <Comments newsItemId={id} />
+    <ErrorBoundary>
+      <Comments newsItemId={id} />
+    </ErrorBoundary>
   </div>
 );
 
