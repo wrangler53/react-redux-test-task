@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { addComment } from '../../actions';
 
@@ -68,6 +69,15 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = { addComment };
+
+Comments.propTypes = {
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  userNickname: PropTypes.string,
+  commentsList: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]).isRequired,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);
 

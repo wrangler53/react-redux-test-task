@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import NewsItem from '../../components/NewsItem';
 
@@ -25,5 +26,12 @@ class NewsFeed extends Component {
 const mapStateToProps = state => ({
   newsList: Object.values(state.newsReducer.news)
 });
+
+NewsFeed.propTypes = {
+  newsList: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.array
+  ]).isRequired
+}
 
 export default connect(mapStateToProps)(NewsFeed);

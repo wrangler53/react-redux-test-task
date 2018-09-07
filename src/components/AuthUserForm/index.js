@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { connect } from 'react-redux';
 
 import { authUser } from '../../actions';
 
-class authUserForm extends Component {
+class AuthUserForm extends Component {
   state = {
     userName: '',
     showMessage: false
@@ -56,4 +58,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = { authUser }
 
-export default connect(mapStateToProps, mapDispatchToProps)(authUserForm);
+AuthUserForm.propTypes = {
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  isNewUser: PropTypes.bool.isRequired,
+  userNickname: PropTypes.string,
+  authUser: PropTypes.func.isRequired
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthUserForm);
