@@ -31,24 +31,26 @@ const initialState = {
 }
 
 const userReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { payload, type } = action;
+  switch (type) {
     case actionTypes.REGISTER_USER:
-      const { userName, id } = action.payload;
       return {
         ...state,
         users: [
           ...state.users,
-          { id, nickname: userName }
+          {
+            id: payload.id,
+            nickname: payload.userName
+          }
         ]
       }
     case actionTypes.LOGIN_USER:
-      const { isNewUser } = action.payload;
       return {
         ...state,
         currentUser: {
-          nickname: userName,
+          nickname: payload.userName,
           isLoggedIn: true,
-          isNewUser
+          isNewUser: payload.isNewUser
         }
       };
     default:
