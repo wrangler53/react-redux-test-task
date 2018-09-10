@@ -9,7 +9,8 @@ class AuthUserForm extends Component {
   state = {
     userName: '',
     showMessage: false,
-    showEmptyFieldErrorMessage: false
+    showEmptyFieldErrorMessage: false,
+    showCharactersCountErrorMessage: false
   }
 
   inputChangeHandler = event => {
@@ -18,22 +19,25 @@ class AuthUserForm extends Component {
 
   authUserHandler = event => {
     event.preventDefault();
-
-    if (this.state.userName.length === 0) {
+    const { userName } = this.state;
+    if (userName.length === 0) {
       this.setState({ showEmptyFieldErrorMessage: true });
+    } else if (userName.trim().length < 3) {
+      this.setState({ showCharactersCountErrorMessage: true });
     } else {
-      this.props.authUser(this.state.userName.trim());
+      this.props.authUser(userName.trim());
       this.setState({
         userName: '',
         showMessage: true,
-        showEmptyFieldErrorMessage: false
+        showEmptyFieldErrorMessage: false,
+        showCharactersCountErrorMessage: false
       });
     }
   }
 
   render() {
     const { isNewUser, userNickname } = this.props;
-    const { showMessage, showEmptyFieldErrorMessage } = this.state;
+    const { showMessage, showEmptyFieldErrorMessage, showCharactersCountErrorMessage } = this.state;
 
     return (
       <div className="auth-user">
@@ -52,6 +56,11 @@ class AuthUserForm extends Component {
         {
           (showEmptyFieldErrorMessage) ?
             <div className="msg msg_error">User name field shouldn`t be empty</div> :
+            null
+        }
+        {
+          (showCharactersCountErrorMessage) ?
+            <div className="msg msg_error">User name should have at least 3 characters</div> :
             null
         }
         {
