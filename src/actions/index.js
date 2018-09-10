@@ -1,12 +1,12 @@
 import * as actionsTypes from '../constants/actionsTypes';
 import checkIsUserExistsInDB from '../helpers/checkIsUserExistsInDB';
 
-export const loginUser = (userName, isNewUser = false) => ({
+const loginUser = (userName, isNewUser = false) => ({
   type: actionsTypes.LOGIN_USER,
   payload: { userName, isNewUser }
 });
 
-export const registerUser = userName => ({
+const registerUser = userName => ({
   type: actionsTypes.REGISTER_USER,
   payload: { id: new Date(), userName }
 });
