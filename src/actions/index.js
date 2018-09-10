@@ -14,25 +14,15 @@ export const registerUser = userName => ({
 export const authUser = userName => (dispatch, getStore) => {
   const users = getStore().userReducer.users;
 
-  if (userName.length === 0) {
-    throw new Error('User name length should be greather than 0');
+  if (checkIsUserExistsInDB(users, userName)) {
+    dispatch(loginUser(userName));
   } else {
-    if (checkIsUserExistsInDB(users, userName)) {
-      dispatch(loginUser(userName));
-    } else {
-      dispatch(registerUser(userName));
-      dispatch(loginUser(userName, true));
-    }
+    dispatch(registerUser(userName));
+    dispatch(loginUser(userName, true));
   }
 }
 
-export const addComment = (newsItemId, commentText, author) => {
-  if ((commentText.length === 0 || commentText.length > 100) || author == null) {
-    throw new Error('User is not logged in in system');
-  } else {
-    return {
-      type: actionsTypes.ADD_COMMENT,
-      payload: { id: new Date(), newsItemId, commentText, author }
-    }
-  }
-}
+export const addComment = (newsItemId, commentText, author) => ({
+  type: actionsTypes.ADD_COMMENT,
+  payload: { id: new Date(), newsItemId, commentText, author }
+});

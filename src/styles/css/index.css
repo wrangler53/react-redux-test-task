@@ -16,7 +16,10 @@ body {
   .msg_success {
     color: #008000; }
   .msg_error {
-    color: #ff0000; }
+    color: #ff0000;
+    font-size: 12px;
+    margin-bottom: 5px;
+    font-style: italic; }
 
 .news-feed {
   display: flex;

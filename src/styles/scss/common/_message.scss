@@ -1,11 +1,18 @@
 .msg {
   margin-top: 5px;
 
+  &-container {
+
+  }
+
   &_success {
     color: $green;
   }
 
   &_error {
     color: $red;
+    font-size: 12px;
+    margin-bottom: 5px;
+    font-style: italic;
   }
 }
