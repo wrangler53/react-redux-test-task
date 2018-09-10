@@ -21,10 +21,10 @@ class Comments extends Component {
 
   addCommentHandler = event => {
     event.preventDefault();
-    const { newsItemId, userNickname, addComment } = this.props;
+    const { newsItemId, userNickname, isUserLoggedIn, addComment } = this.props;
     const { comment, maxSymbolsCount } = this.state;
 
-    if (userNickname === null) {
+    if (!isUserLoggedIn) {
       this.setState({ showUserErrorMessage: true });
     } else if (comment.length === 0) {
       this.setState({ showEmptyFieldErrorMessage: true });
@@ -47,8 +47,7 @@ class Comments extends Component {
       comment,
       maxSymbolsCount,
       showMaxSymbolsError,
-      showEmptyFieldErrorMessage,
-      showUserErrorMessage
+      showEmptyFieldErrorMessage
     } = this.state;
 
     return (
@@ -71,7 +70,7 @@ class Comments extends Component {
                 null
             }
             {
-              (!isUserLoggedIn && showUserErrorMessage) ?
+              (!isUserLoggedIn) ?
                 <div className="msg msg_error">Register or log in please to leave a comment!</div> :
                 null
             }
