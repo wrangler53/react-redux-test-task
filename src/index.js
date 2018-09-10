@@ -1,22 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
 import reduxThunk from 'redux-thunk';
 
-import newsReducer from './reducers/news';
-import userReducer from './reducers/user';
+import rootReducer from './reducers';
 
 import './styles/css/index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-
-const rootReducer = combineReducers({
-  newsReducer,
-  userReducer
-});
 
 const store = createStore(
   rootReducer,
