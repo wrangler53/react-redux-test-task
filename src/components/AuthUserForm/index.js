@@ -20,6 +20,7 @@ class AuthUserForm extends Component {
   authUserHandler = event => {
     event.preventDefault();
     const { userName } = this.state;
+
     if (userName.length === 0) {
       this.setState({ showEmptyFieldErrorMessage: true });
     } else if (userName.trim().length < 3) {
@@ -37,7 +38,12 @@ class AuthUserForm extends Component {
 
   render() {
     const { isNewUser, userNickname } = this.props;
-    const { showMessage, showEmptyFieldErrorMessage, showCharactersCountErrorMessage } = this.state;
+    const {
+      userName,
+      showMessage,
+      showEmptyFieldErrorMessage,
+      showCharactersCountErrorMessage
+    } = this.state;
 
     return (
       <div className="auth-user">
@@ -54,7 +60,7 @@ class AuthUserForm extends Component {
           />
         </form>
         {
-          (showEmptyFieldErrorMessage) ?
+          (userName.length === 0 && showEmptyFieldErrorMessage) ?
             <div className="msg msg_error">User name field shouldn`t be empty</div> :
             null
         }
