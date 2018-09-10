@@ -13,7 +13,7 @@ class AuthUserForm extends Component {
   }
 
   inputChangeHandler = event => {
-    this.setState({ userName: event.target.value })
+    this.setState({ userName: event.target.value });
   }
 
   authUserHandler = event => {

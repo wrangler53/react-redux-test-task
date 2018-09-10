@@ -56,7 +56,7 @@ class Comments extends Component {
         <form className="leave-comment" onSubmit={event => this.addCommentHandler(event)}>
           <input
             type="text"
-            value={this.state.comment}
+            value={comment}
             className="leave-comment__input"
             maxLength={maxSymbolsCount}
             onChange={event => this.inputChangeHandler(event)}
@@ -66,7 +66,7 @@ class Comments extends Component {
               Characters left: {maxSymbolsCount - comment.length}
             </div>
             {
-              (showEmptyFieldErrorMessage) ?
+              (comment.length === 0 && showEmptyFieldErrorMessage) ?
                 <div className="msg msg_error">Comments field shouldn`t be empty</div> :
                 null
             }

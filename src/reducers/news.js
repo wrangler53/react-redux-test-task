@@ -33,7 +33,7 @@ const newsReducer = (state = initialState, action) => {
 
       const updatedItem = state.news[newsIndex];
       updatedItem.comments = [...updatedItem.comments];
-      updatedItem.comments.push({ id, author, commentText });
+      updatedItem.comments.unshift({ id, author, commentText });
 
       return {
         ...state,
