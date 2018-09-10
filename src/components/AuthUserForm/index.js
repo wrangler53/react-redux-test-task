@@ -8,7 +8,8 @@ import { authUser } from '../../actions';
 class AuthUserForm extends Component {
   state = {
     userName: '',
-    showMessage: false
+    showMessage: false,
+    showEmptyFieldErrorMessage: false
   }
 
   inputChangeHandler = event => {
@@ -17,12 +18,22 @@ class AuthUserForm extends Component {
 
   authUserHandler = event => {
     event.preventDefault();
-    this.props.authUser(this.state.userName);
-    this.setState({ userName: '', showMessage: true });
+
+    if (this.state.userName.length === 0) {
+      this.setState({ showEmptyFieldErrorMessage: true });
+    } else {
+      this.props.authUser(this.state.userName.trim());
+      this.setState({
+        userName: '',
+        showMessage: true,
+        showEmptyFieldErrorMessage: false
+      });
+    }
   }
 
   render() {
     const { isNewUser, userNickname } = this.props;
+    const { showMessage, showEmptyFieldErrorMessage } = this.state;
 
     return (
       <div className="auth-user">
@@ -39,7 +50,12 @@ class AuthUserForm extends Component {
           />
         </form>
         {
-          (this.state.showMessage) ?
+          (showEmptyFieldErrorMessage) ?
+            <div className="msg msg_error">User name field shouldn`t be empty</div> :
+            null
+        }
+        {
+          (showMessage) ?
             (isNewUser) ?
               <div className="msg msg_success">User {userNickname} was successfully registered and logged in</div> :
               <div className="msg msg_success">User {userNickname} was successfully logged in</div>

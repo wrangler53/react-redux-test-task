@@ -11,7 +11,7 @@ class Comments extends Component {
     comment: '',
     maxSymbolsCount: 100,
     showMaxSymbolsError: false,
-    showCommentErrorMessage: false,
+    showEmptyFieldErrorMessage: false,
     showUserErrorMessage: false
   }
 
@@ -21,21 +21,21 @@ class Comments extends Component {
 
   addCommentHandler = event => {
     event.preventDefault();
-    const { newsItemId, userNickname } = this.props;
+    const { newsItemId, userNickname, addComment } = this.props;
     const { comment, maxSymbolsCount } = this.state;
 
     if (userNickname === null) {
       this.setState({ showUserErrorMessage: true });
     } else if (comment.length === 0) {
-      this.setState({ showCommentErrorMessage: true });
+      this.setState({ showEmptyFieldErrorMessage: true });
     } else if (comment.length > maxSymbolsCount) {
       this.setState({ showMaxSymbolsError: true });
     } else {
-      this.props.addComment(newsItemId, comment, userNickname);
+      addComment(newsItemId, comment, userNickname);
       this.setState({
         comment: '',
         showMaxSymbolsError: false,
-        showCommentErrorMessage: false,
+        showEmptyFieldErrorMessage: false,
         showUserErrorMessage: false
       });
     }
@@ -47,7 +47,7 @@ class Comments extends Component {
       comment,
       maxSymbolsCount,
       showMaxSymbolsError,
-      showCommentErrorMessage,
+      showEmptyFieldErrorMessage,
       showUserErrorMessage
     } = this.state;
 
@@ -66,7 +66,7 @@ class Comments extends Component {
               Characters left: {maxSymbolsCount - comment.length}
             </div>
             {
-              (showCommentErrorMessage) ?
+              (showEmptyFieldErrorMessage) ?
                 <div className="msg msg_error">Comments field shouldn`t be empty</div> :
                 null
             }
