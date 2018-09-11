@@ -26,7 +26,7 @@ class Comments extends Component {
 
     if (!isUserLoggedIn) {
       this.setState({ showUserErrorMessage: true });
-    } else if (comment.length === 0) {
+    } else if (comment.trim().length === 0) {
       this.setState({ showEmptyFieldErrorMessage: true });
     } else if (comment.length > maxSymbolsCount) {
       this.setState({ showMaxSymbolsError: true });
@@ -65,8 +65,10 @@ class Comments extends Component {
               Characters left: {maxSymbolsCount - comment.length}
             </div>
             {
-              (comment.length === 0 && showEmptyFieldErrorMessage) ?
-                <div className="msg msg_error">Comments field shouldn`t be empty</div> :
+              (comment.trim().length === 0 && showEmptyFieldErrorMessage) ?
+                <div className="msg msg_error">
+                  Comments field shouldn`t be empty. Please, enter at least 1 symbol
+                </div> :
                 null
             }
             {
